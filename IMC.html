@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Imc</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      color: #222;
+    }
+
+    h1 {
+      font-size: 22px;
+      color: #2c5282;
+    }
+
+    label {
+      display: inline-block;
+      width: 100px;
+    }
+
+    input {
+      padding: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #aaa;
+      border-radius: 3px;
+    }
+
+    button {
+      padding: 7px 14px;
+      background-color: #2c5282;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1a365d;
+    }
+
+    #resultadoIMC {
+      margin: 15px 0;
+      font-size: 18px;
+      color: #2c5282;
+    }
+
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      display: inline-block;
+      border-radius: 4px;
+    }
+  </style>
+  <script>
+    function calcularIMC() {
+      var altura = document.getElementById("altura").value;
+      var peso = document.getElementById("peso").value;
+      altura /= 100;
+      var imc = (peso / (altura * altura)).toFixed(2);
+      document.getElementById("resultadoIMC").innerHTML = "IMC: <strong>" + imc + "</strong>";
+    }
+  </script>
+</head>
+<body>
+  <h1>Cálculo Índice de Massa Corporal</h1>
+  
+  <label for="altura">Altura (cm): </label>
+  <input id="altura" type="number" min="100" max="250"><br>
+  
+  <label for="peso">Peso (kg): </label>
+  <input id="peso" type="number" min="0" max="250"><br>
+  
+  <button onclick="calcularIMC()">Calcular o IMC</button>
+  
+  <div id="resultadoIMC"></div>
+  
+  <div id="extra">
+<pre>
+***************************************************************
+| IMC             | CATEGORIA                                 |
+|-------------------------------------------------------------|
+| Até 18,5        | Abaixo do peso                            |
+| De 18,5 - 24,9  | Saudável                                  |
+| De 25,0 - 29,9  | Sobrepeso                                 |
+| De 30,0 - 39,9  | Obeso                                     |
+| Acima de 40     | Extremo ou alto risco de obesidade        |
+***************************************************************
+</pre>
+  </div>
+</body>
+</html>
